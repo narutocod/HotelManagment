@@ -1,0 +1,288 @@
+.room-grid {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.room-grid__header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+.room-grid__header h2 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.room-grid__subtitle {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.floors-container {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.floor {
+  margin-bottom: 25px;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.floor:last-child {
+  margin-bottom: 0;
+}
+
+.floor__header {
+  background: #f8f9fa;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+.floor__title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.floor__info {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.floor__rooms {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stair-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 2px dashed #dee2e6;
+}
+
+.stair-icon {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.stair-label {
+  font-size: 0.7rem;
+  color: #666;
+  text-align: center;
+  font-weight: 500;
+}
+
+.rooms-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+.room {
+  width: 60px;
+  height: 50px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.room:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.room--available {
+  background-color: #28a745;
+  color: white;
+}
+
+.room--available:hover {
+  background-color: #218838;
+}
+
+.room--occupied {
+  background-color: #dc3545;
+  color: white;
+  cursor: not-allowed;
+}
+
+.room--occupied:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.room--selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 123, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
+.room__number {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.room-grid__footer {
+  background: #f8f9fa;
+  padding: 15px 25px;
+  border-top: 1px solid #e1e5e9;
+  text-align: center;
+}
+
+.travel-info {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.travel-info strong {
+  color: #333;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 1024px) {
+  .floors-container {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .floor__rooms {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stair-indicator {
+    align-self: flex-start;
+  }
+
+  .rooms-row {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .room-grid__header {
+    padding: 20px 15px;
+  }
+
+  .room-grid__header h2 {
+    font-size: 1.4rem;
+  }
+
+  .floors-container {
+    padding: 15px;
+  }
+
+  .floor__rooms {
+    padding: 10px 15px;
+  }
+
+  .rooms-row {
+    gap: 6px;
+  }
+
+  .room {
+    width: 50px;
+    height: 42px;
+    font-size: 0.75rem;
+  }
+
+  .room__number {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rooms-row {
+    gap: 4px;
+  }
+
+  .room {
+    width: 45px;
+    height: 38px;
+    font-size: 0.7rem;
+  }
+
+  .room__number {
+    font-size: 0.65rem;
+  }
+
+  .stair-indicator {
+    min-width: 50px;
+    padding: 8px;
+  }
+
+  .stair-icon {
+    font-size: 1.2rem;
+  }
+
+  .stair-label {
+    font-size: 0.6rem;
+  }
+}
