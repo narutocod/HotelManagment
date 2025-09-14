@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(helmet());
-const cors = require('cors');
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || '*', // Use environment variable or allow all origins fallback
 };
