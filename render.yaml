@@ -12,14 +12,15 @@ services:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 10000   # Render will auto-assign port, backend must use process.env.PORT
+        value: 10000   # Render auto-assigns port, so your app must use process.env.PORT
 
   # Frontend (React app)
-  - type: static
+  - type: web
     name: hotel-booking-frontend
+    env: static
     buildCommand: |
       cd client && npm install && npm run build
-    publishPath: client/build
+    staticPublishPath: client/build
     envVars:
       - key: NODE_ENV
         value: production
