@@ -11,7 +11,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(helmet());
-app.use(cors());
+const cors = require('cors');
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || '*', // Use environment variable or allow all origins fallback
+};
+app.use(cors(corsOptions));
 app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
