@@ -1,0 +1,25 @@
+services:
+  # Backend (Node.js Express API)
+  - type: web
+    name: hotel-booking-backend
+    env: node
+    plan: free
+    buildCommand: |
+      cd server && npm install
+    startCommand: |
+      cd server && node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000   # Render will auto-assign port, backend must use process.env.PORT
+
+  # Frontend (React app)
+  - type: static
+    name: hotel-booking-frontend
+    buildCommand: |
+      cd client && npm install && npm run build
+    publishPath: client/build
+    envVars:
+      - key: NODE_ENV
+        value: production
